@@ -1,7 +1,11 @@
-# README
+Proyecto BACKEND para ingreso a Alliot
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Inicio de la aplicación
+
+Para levantar el sistema de debe ejecutar
+```sh
+$ gem update --system  && rails server
+```
 
 Things you may want to cover:
 
