@@ -1,39 +1,40 @@
 class Api::V1::RequerimentsController < ApplicationController
   before_action :set_requeriment, only: [:show, :update, :destroy]
-
-  # GET /requeriments
+  respond_to :json
+  
+  # GET /requeriments : Lista todos los requerimientos
   def index
     @requeriments = Requeriment.all
 
-    render json: @requeriments
+    render json: @requeriments.as_json(:except => [:created_at, :updated_at])
   end
 
-  # GET /requeriments/1
+  # GET /requeriments/1 : Muestra un requerimiento
   def show
-    render json: @requeriment
+    render json: @requeriment.as_json(:except => [:created_at, :updated_at])
   end
 
-  # POST /requeriments
+  # POST /requeriments : Crea un requerimiento
   def create
-    @requeriment = Requeriment.new(requeriment_params)
+    @requeriment = current_user.requeriments.new(requeriment_params)
 
     if @requeriment.save
-      render json: @requeriment, status: :created, location: @requeriment
+      render json: @requeriment.as_json(:except => [:created_at, :updated_at]), status: :created
     else
       render json: @requeriment.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /requeriments/1
+  # PATCH/PUT /requeriments/1 : Edita un requerimiento
   def update
     if @requeriment.update(requeriment_params)
-      render json: @requeriment
+      render json: @requeriment.as_json(:except => [:created_at, :updated_at])
     else
       render json: @requeriment.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /requeriments/1
+  # DELETE /requeriments/1 : Borra un requerimiento
   def destroy
     @requeriment.destroy
   end
@@ -46,7 +47,7 @@ class Api::V1::RequerimentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def requeriment_params
-      params.require(:requeriment).permit(:title, :content, :user_id)
+      params.require(:requeriment).permit(:title, :content)
     end
 
 end

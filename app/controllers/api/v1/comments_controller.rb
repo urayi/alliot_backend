@@ -1,39 +1,40 @@
 class Api::V1::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
-
-  # GET /comments
+  respond_to :json
+  
+  # GET /comments : Lista todos los comentarios
   def index
     @comments = Comment.all
 
-    render json: @comments
+    render json: @comments.as_json(:except => [:created_at, :updated_at])
   end
 
-  # GET /comments/1
+  # GET /comments/1 : Muestra un comentario por id
   def show
-    render json: @comment
+    render json: @comment.as_json(:except => [:created_at, :updated_at])
   end
 
-  # POST /comments
+  # POST /comments : Crea un comentario asociado al usuario y el requerimiento
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new( comment: params[:comment], requeriment_id: params[:requeriment_id])
 
     if @comment.save
-      render json: @comment, status: :created, location: @comment
+      render json: @comment.as_json(:except => [:created_at, :updated_at]), status: :created
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /comments/1
+  # PATCH/PUT /comments/1 : Edita un comentario
   def update
     if @comment.update(comment_params)
-      render json: @comment
+      render json: @comment.as_json(:except => [:created_at, :updated_at])
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /comments/1
+  # DELETE /comments/1 : Borra un comentario
   def destroy
     @comment.destroy
   end
@@ -46,6 +47,6 @@ class Api::V1::CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:comment, :user, :requeriment)
+      params.require(:comment).permit(:comment, :requeriment_id)
     end
 end
