@@ -6,20 +6,25 @@ Rails.application.routes.draw do
     post '/signup', to: 'registrations#create'
     post  '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
+    
   end
+  
+  namespace :api do
+    namespace :v1 do
+      
+      # Usuarios
+      resources :users
+      
+      # Requerimientos
+      resources :requeriments
 
-  # Usuarios
-  resources :users
+      # Comentarios
+      resources :comments
 
-  # Requerimientos
-  # resources :requeriments
-
-  # Comentarios
-  # resources :comments
-
-  # Votos
-  # resources :votes
-
+      # Votos
+      resources :votes
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
