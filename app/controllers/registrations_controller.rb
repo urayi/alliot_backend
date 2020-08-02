@@ -3,8 +3,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-    resource.save
-    render json: resource, status: :created
+    if resource.save
+      render json: resource, status: :created, :except => [:jti, :created_at, :updated_at]
+    else
+      render json: { errors: [{ status: '400', title: 'Bad Request' }] }.to_json, status: :bad_request
+    end
   end
 
 end

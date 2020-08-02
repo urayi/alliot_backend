@@ -4,7 +4,11 @@ class SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: current_user
+    if current_user
+      render json: resource, :except => [:jti, :created_at, :updated_at]
+    else
+      render json: { errors: [{ status: '400', title: 'Bad Request' }]}.to_json,  status: :bad_request
+    end
   end
 
   def respond_to_on_destroy
