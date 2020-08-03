@@ -16,7 +16,7 @@ class Api::V1::VotesController < ApplicationController
 
   # POST /votes : Crea un voto asociado al usuario y el requerimiento
   def create
-    @vote = current_user.votes.new( vote: params[:vote], requeriment_id: params[:requeriment_id] )
+    @vote = current_user.votes.new( vote: params[:vote], requirement_id: params[:requirement_id] )
 
     if @vote.save
       render json: @vote.as_json(:except => [:created_at, :updated_at]), status: :created
@@ -39,12 +39,15 @@ class Api::V1::VotesController < ApplicationController
     @vote.destroy
   end
 
-  # PUT /votes/requeriment
+  # PUT /votes/requirement
   def edit
-    @vote = current_user.votes.find_by(requeriment_id: params[:requeriment_id])
+    @vote = current_user.votes.find_by(requirement_id: params[:requirement_id]) ?
+            current_user.votes.find_by(requirement_id: params[:requirement_id]) :
+            current_user.votes.new( vote: params[:vote], requirement_id: params[:requirement_id] )
     if @vote.update(vote: params[:vote])
       render json: @vote.as_json(:except => [:created_at, :updated_at])
     else
+
       render json: @vote.errors, status: :unprocessable_entity
     end
   end
@@ -58,6 +61,6 @@ class Api::V1::VotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def vote_params
-      params.require(:vote).permit(:vote, :requeriment_id)
+      params.require(:vote).permit(:vote, :requirement_id)
     end
 end

@@ -12,7 +12,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create vote" do
     assert_difference('Vote.count') do
-      post votes_url, params: { vote: { requeriment: @vote.requeriment, user: @vote.user, vote: @vote.vote } }, as: :json
+      post votes_url, params: { vote: { requirement: @vote.requirement, user: @vote.user, vote: @vote.vote } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update vote" do
-    patch vote_url(@vote), params: { vote: { requeriment: @vote.requeriment, user: @vote.user, vote: @vote.vote } }, as: :json
+    patch vote_url(@vote), params: { vote: { requirement: @vote.requirement, user: @vote.user, vote: @vote.vote } }, as: :json
     assert_response 200
   end
 

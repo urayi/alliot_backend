@@ -15,20 +15,20 @@ ActiveRecord::Schema.define(version: 2020_08_03_022805) do
   create_table "comments", force: :cascade do |t|
     t.string "comment", null: false
     t.integer "user_id", null: false
-    t.integer "requeriment_id", null: false
+    t.integer "requirement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["requeriment_id"], name: "index_comments_on_requeriment_id"
+    t.index ["requirement_id"], name: "index_comments_on_requirement_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "requeriments", force: :cascade do |t|
+  create_table "requirements", force: :cascade do |t|
     t.string "title", null: false
     t.string "content", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_requeriments_on_user_id"
+    t.index ["user_id"], name: "index_requirements_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,17 +49,17 @@ ActiveRecord::Schema.define(version: 2020_08_03_022805) do
   create_table "votes", force: :cascade do |t|
     t.boolean "vote", null: false
     t.integer "user_id", null: false
-    t.integer "requeriment_id", null: false
+    t.integer "requirement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"user\", \"requeriment\"", name: "index_votes_on_user_and_requeriment"
-    t.index ["requeriment_id"], name: "index_votes_on_requeriment_id"
+    t.index "\"user\", \"requirement\"", name: "index_votes_on_user_and_requirement"
+    t.index ["requirement_id"], name: "index_votes_on_requirement_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
-  add_foreign_key "comments", "requeriments"
+  add_foreign_key "comments", "requirements"
   add_foreign_key "comments", "users"
-  add_foreign_key "requeriments", "users"
-  add_foreign_key "votes", "requeriments"
+  add_foreign_key "requirements", "users"
+  add_foreign_key "votes", "requirements"
   add_foreign_key "votes", "users"
 end

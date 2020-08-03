@@ -3,9 +3,9 @@
 one:
   vote: MyString
   user: 
-  requeriment: 
+  requirement: 
 
 two:
   vote: MyString
   user: 
-  requeriment: 
+  requirement: 

@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
 
   # Registro y Autenticación de usuario
   devise_for :users, skip: %i[registrations sessions passwords]
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :users
       
       # Requerimientos
-      resources :requeriments
+      resources :requirements
 
       # Comentarios
       resources :comments
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       # Votos
       resources :votes
       # Editar Voto
-      put '/votes/requeriment/:requeriment_id', to: 'votes#edit'
+      put '/votes/requirement/:requirement_id', to: 'votes#edit'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
