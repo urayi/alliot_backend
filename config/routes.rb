@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
       # Votos
       resources :votes
+      # Editar Voto
+      put '/votes/requeriment/:requeriment_id', to: 'votes#edit'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

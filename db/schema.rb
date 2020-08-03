@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_074148) do
+ActiveRecord::Schema.define(version: 2020_08_03_022805) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_08_02_074148) do
     t.integer "requeriment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "\"user\", \"requeriment\"", name: "index_votes_on_user_and_requeriment"
     t.index ["requeriment_id"], name: "index_votes_on_requeriment_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end

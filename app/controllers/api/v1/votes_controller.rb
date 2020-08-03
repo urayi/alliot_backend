@@ -27,7 +27,7 @@ class Api::V1::VotesController < ApplicationController
 
   # PATCH/PUT /votes/1 : Edita un voto
   def update
-    if @vote.update(vote_params)
+    if @vote.update(vote: params[:vote])
       render json: @vote.as_json(:except => [:created_at, :updated_at])
     else
       render json: @vote.errors, status: :unprocessable_entity
@@ -39,10 +39,21 @@ class Api::V1::VotesController < ApplicationController
     @vote.destroy
   end
 
+  # PUT /votes/requeriment
+  def edit
+    @vote = current_user.votes.find_by(requeriment_id: params[:requeriment_id])
+    if @vote.update(vote: params[:vote])
+      render json: @vote.as_json(:except => [:created_at, :updated_at])
+    else
+      render json: @vote.errors, status: :unprocessable_entity
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
-      @vote = Vote.find(params[:id])
+      #@vote = Vote.find(params[:id])
+      @vote = current_user.votes.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
