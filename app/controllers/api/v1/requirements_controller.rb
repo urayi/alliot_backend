@@ -4,9 +4,11 @@ class Api::V1::RequirementsController < ApplicationController
   
   # GET /requirements : Lista todos los requerimientos
   def index
-    @requirements = Requirement.all
-
-    render json: @requirements.as_json(:except => [:created_at, :updated_at])
+    @requirements = Requirement.all.order(params[:order_list] ? params[:order_list] : 'created_at DESC').each do |requirement|
+      requirement.rank = requirement.votes.where(vote: true).count - requirement.votes.where(vote: false).count
+      requirement.save
+    end
+      render json: @requirements.as_json(:except => [:created_at, :updated_at])
   end
 
   # GET /requirements/1 : Muestra un requerimiento
@@ -47,7 +49,7 @@ class Api::V1::RequirementsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def requirement_params
-      params.require(:requirement).permit(:title, :content)
+      params.require(:requirement).permit(:title, :content, :order_list)
     end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_022805) do
+ActiveRecord::Schema.define(version: 2020_08_06_054604) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_022805) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "rank"
     t.index ["user_id"], name: "index_requirements_on_user_id"
   end
 
