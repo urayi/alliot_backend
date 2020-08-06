@@ -6,7 +6,6 @@
     post '/signup', to: 'registrations#create'
     post  '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-    
   end
   
   namespace :api do
@@ -22,10 +21,8 @@
       get '/comments/requirement/:requirement_id', to: 'comments#list'
       resources :comments
       
-
       # Votos
-      resources :votes
-      # Editar Voto
+      # Crear/Editar Voto
       put '/votes/requirement/:requirement_id', to: 'votes#edit'
     end
   end
