@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "4e5b616b-ca2d-43d1-bb59-89d29732c4f2",
+		"name": "Alliot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4NGE5YzAyMi0wZjJhLTRkMjUtYmQ5Ny05ZWYzMzZhMzM1OGIiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2NjA4NjUyLCJleHAiOjE1OTY2OTUwNTJ9.GLMMlTQLgTA65t4tAj2okBr4UtVAWlXaBujDrgUpLH4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"name\": \"Nombre\",\r\n        \"email\": \"polanco@gmail.com\",\r\n        \"password\": \"password\"\r\n    }\r\n\r\n}\r\n"
+				},
+				"url": {
+					"raw": "localhost:3000/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Usuario",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Francisco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Iniciar Session",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"email\": \"polanco@gmail.com\",\r\n        \"password\": \"password\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cerrar Session",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2N2UwNDI5OC04ZjMwLTRmNGQtODNiMC00MmZjNTEyYTJlNDMiLCJzdWIiOiIyIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2MzkwMTk5LCJleHAiOjE1OTY0NzY1OTl9.vyrsz4zHT2CK8A8mDikdNFvBeoyxttVxy2qah28O8h4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Requerimiento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhYTY5NzA4OS03ZGNlLTQ5MmEtYjA3Zi1iOGQ5YTkzMmFlZDIiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2NjkxMjIwLCJleHAiOjE1OTY3Nzc2MjB9.bAw1pgCvrUmGKR0S6HgywDsi6mqfFeERk7MObyO4xDc",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"prueba 3 de titulo\",\r\n    \"content\": \"prueba 3 de contenido\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/requirements",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"requirements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requerimientos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiNGMxZTUwOC0yYTg2LTQ3MjQtYmVlYy0xMzAyMjljNDBhMjIiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2Njk4MjY5LCJleHAiOjE1OTY3ODQ2Njl9.R_VFRdjHi5bl6SM9-Glp8828AkF6Ph-A19JuFy969E4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/v1/requirements?order_by_title=\"title DESC\"&order_by_rank=\"rank DESC\"",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"requirements"
+					],
+					"query": [
+						{
+							"key": "order_by_title",
+							"value": "\"title DESC\""
+						},
+						{
+							"key": "order_by_rank",
+							"value": "\"rank DESC\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Comentario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI2MzA1OTE3MS1lNmZhLTRjMDQtOTMzNy1iNWNiYmY1ZmNmODciLCJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2NjkwOTk5LCJleHAiOjE1OTY3NzczOTl9.0upnOb9oXCuz1FO4kA-J7jm_VU6nA6nj8lGTmBXt6Q8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"comentario 2\",\r\n    \"requeriment_id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/comments",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Voto",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyZDg5ZmVjOC1hOThiLTRhOGQtOGM2Yi1kNWI0YzYzYjk0ZWIiLCJzdWIiOiIyIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2Njk0NDQxLCJleHAiOjE1OTY3ODA4NDF9.i2DGUwHCPCGr0_RdAN3LyfzxEDy_DI3EttyC86yzFfI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vote\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/votes/requirement/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"votes",
+						"requirement",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comentarios de un Requerimiento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhYTY5NzA4OS03ZGNlLTQ5MmEtYjA3Zi1iOGQ5YTkzMmFlZDIiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTk2NjkxMjIwLCJleHAiOjE1OTY3Nzc2MjB9.bAw1pgCvrUmGKR0S6HgywDsi6mqfFeERk7MObyO4xDc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/comments/requirement/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"comments",
+						"requirement",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
