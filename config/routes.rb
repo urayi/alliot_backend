@@ -19,7 +19,9 @@
       resources :requirements
 
       # Comentarios
+      get '/comments/requirement/:requirement_id', to: 'comments#list'
       resources :comments
+      
 
       # Votos
       resources :votes

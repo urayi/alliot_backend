@@ -39,6 +39,11 @@ class Api::V1::CommentsController < ApplicationController
     @comment.destroy
   end
 
+  def list
+    @comments = Comment.where(requirement_id: params[:requirement_id])
+    render json: @comments.as_json(:except => [:created_at, :updated_at])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
