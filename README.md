@@ -2,27 +2,24 @@ Proyecto BACKEND para ingreso a Alliot
 
 ## Inicio de la aplicación
 
-Para levantar el sistema de debe ejecutar
-```sh
-$ gem update --system  && rails server
-```
+
+
+
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: ruby-2.7.0
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+Para levantar el sistema de debe ejecutar
+```sh
+$ gem update --system  && rails server
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para crear el contenedor de Docker
+```sh
+$ docker build --build-arg MASTER_KEY=c2209b422db318ad96c12dcb0bebe271 -t alliot/backend .
+```
