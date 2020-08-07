@@ -10,6 +10,13 @@ class Api::V1::RequirementsController < ApplicationController
       render json: @requirements.as_json(:except => [:created_at, :updated_at])
   end
 
+  # GET /requirements/1 : Muestra un requerimiento
+  def show
+    @requirement.rank = @requirement.votes.where(vote: true).count - @requirement.votes.where(vote: false).count
+    @requirement.save
+    render json: @requirement.as_json(:except => [:created_at, :updated_at])
+  end
+
   # POST /requirements : Crea un requerimiento
   def create
     @requirement = current_user.requirements.new(requirement_params)
